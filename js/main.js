@@ -3,7 +3,7 @@
       disco branco "Arraste/Explorar" sobre carrosséis e cartões; bolha vermelha de 390px nas seções com foto
       (herói e chamada final), como no vídeo de referência.
    2. Gaveta (menu lateral) — abre pela barra lateral ou pelo hambúrguer no celular.
-   3. Cabeçalho some ao rolar para baixo e volta ao subir.
+   3. Cabeçalho some ao rolar para baixo eh volta ao subir.
    4. Título do herói: letras entram uma a uma; sublinhado desenhado por SVG.
    5. Revelação ao rolar (IntersectionObserver) e parallax da colagem.
    6. Carrossel de depoimentos (rolagem nativa com snap + setas + "1 — 6").
@@ -15,7 +15,7 @@
   const temMouse = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* ---------- 1. cursor ---------- */
-  if (temMouse && !reduz) {
+  if (temMouse) {
     d.body.classList.add('tem-mouse');
     const cc = $('.cc'), dot = $('.cc__dot'), ring = $('.cc__ring'), solid = $('.cc__solid'), solidTx = $('.cc__solid i');
     // bolha vermelha: um elemento dentro de cada seção [data-blob], seguindo o mouse com atraso
