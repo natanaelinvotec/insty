@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projeto INSTY — site institucional (base)</title>
+<meta name="description" content="Base do site institucional do Projeto INSTY. Estrutura, tipografia e interações reconstruídas; textos e fotos são provisórios.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700&family=DM+Sans:wght@500;700&family=DM+Serif+Text:ital@0;1&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== cursor personalizado (desktop com mouse) ===== -->
+<div class="cc" aria-hidden="true">
+  <span class="cc__dot"></span>
+  <span class="cc__ring"></span>
+  <span class="cc__solid"><i>Arraste</i></span>
+</div>
+
+<!-- ===== barra lateral fixa ===== -->
+<aside class="barra" aria-label="Barra lateral">
+  <button type="button" class="barra__menu" id="abrirMenu" aria-controls="gaveta" aria-expanded="false" aria-label="Abrir o menu">
+    <span class="barra__menu-ico"><i></i><i></i></span>
+    <span class="barra__menu-tx">Menu</span>
+  </button>
+  <div class="barra__social">
+    <a href="#">Fb.</a><a href="#">Ig.</a><a href="#">Tw.</a><span>Follow us —</span>
+  </div>
+  <div class="barra__lang">
+    <a href="#">En.</a><a href="#">Fr.</a><a href="#">Ge.</a>
+  </div>
+</aside>
+
+<!-- ===== gaveta (menu lateral) ===== -->
+<div class="gaveta" id="gaveta" aria-hidden="true">
+  <div class="gaveta__fundo" data-fechar></div>
+  <nav class="gaveta__painel" aria-label="Menu principal">
+    <a class="gaveta__logo" href="#inicio" aria-label="Início"><svg viewBox="0 0 48 32"><use href="#logo"/></svg></a>
+    <button type="button" class="gaveta__fechar" data-fechar aria-label="Fechar o menu"><span></span><span></span></button>
+    <ul class="gaveta__lista">
+      <li><a href="#inicio">Home</a></li>
+      <li><a href="#empresa">Company</a></li>
+      <li><a href="#solucoes">Solutions</a></li>
+      <li><a href="#servicos">Services</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contato">Contact</a></li>
+    </ul>
+    <div class="gaveta__rodape">
+      <a href="mailto:contato@exemplo.com">contato@exemplo.com</a>
+      <p>Tem uma dúvida? Estamos aqui para responder.</p>
+    </div>
+  </nav>
+</div>
+
+<!-- ===== cabeçalho ===== -->
+<header class="topo" id="topo">
+  <nav class="topo__nav topo__nav--esq" aria-label="Principal, esquerda">
+    <a href="#inicio" class="atual">Home<sup>01</sup></a>
+    <a href="#empresa">Company<sup>02</sup></a>
+    <a href="#solucoes">Solutions<sup>03</sup></a>
+  </nav>
+  <a class="topo__logo" href="#inicio" aria-label="Início"><svg viewBox="0 0 48 32"><use href="#logo"/></svg></a>
+  <nav class="topo__nav topo__nav--dir" aria-label="Principal, direita">
+    <a href="#servicos">Services<sup>04</sup></a>
+    <a href="#blog">Blog<sup>05</sup></a>
+    <a href="#contato">Contact<sup>06</sup></a>
+  </nav>
+  <button type="button" class="topo__ham" id="abrirMenuMobile" aria-controls="gaveta" aria-expanded="false" aria-label="Abrir o menu"><i></i><i></i></button>
+</header>
+
+<main class="pagina">
+
+<!-- 1. HERÓI -->
+<section class="heroi" id="inicio" data-blob>
+  <div class="heroi__fundo" style="background-image:url('https://images.pexels.com/photos/5075787/pexels-photo-5075787.jpeg?auto=compress&cs=tinysrgb&w=2200')"></div>
+  <div class="heroi__veu"></div>
+  <div class="heroi__conteudo">
+    <span class="chip rv" data-rv>Investimentos</span>
+    <h1 class="heroi__titulo" data-split><span class="sublinha">Investindo</span> em plataformas digitais.</h1>
+    <p class="heroi__sub rv" data-rv style="--d:.5s">Somos um estúdio digital que desenvolve <a href="#empresa">visão estratégica</a> e produtos por meio de percepção cultural e emoção.</p>
+  </div>
+</section>
+
+<!-- 2. NOSSA HISTÓRIA (faixa vermelha) -->
+<section class="historia" id="empresa">
+  <svg class="historia__marca" viewBox="0 0 48 32" aria-hidden="true"><path d="M2 2h8l6 18 6-18h4l6 18 6-18h8L34 30h-6l-4-12-4 12h-6z"/></svg>
+  <div class="historia__grade">
+    <h4 class="rv" data-rv>Nossa história</h4>
+    <div class="rv" data-rv style="--d:.15s">
+      <p>Somos um estúdio digital que desenvolve <a href="#solucoes">visão estratégica</a> e produtos por meio de percepção cultural e emoção.</p>
+      <a class="btn" href="#contato">Enviar mensagem <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- 3. SOLUÇÕES (colagem + acordeão) -->
+<section class="sec solucoes linhas" id="solucoes">
+  <div class="solucoes__colagem" aria-hidden="true">
+    <figure class="plx" data-plx="-0.08"><img src="https://images.pexels.com/photos/5950690/pexels-photo-5950690.jpeg?auto=compress&cs=tinysrgb&w=500&h=530&fit=crop" alt="" loading="lazy"></figure>
+    <figure class="plx" data-plx="0.10"><img src="https://images.pexels.com/photos/8815841/pexels-photo-8815841.jpeg?auto=compress&cs=tinysrgb&w=560&h=720&fit=crop" alt="" loading="lazy"></figure>
+    <figure class="plx" data-plx="-0.16"><img src="https://images.pexels.com/photos/11738405/pexels-photo-11738405.jpeg?auto=compress&cs=tinysrgb&w=540&h=730&fit=crop" alt="" loading="lazy"></figure>
+  </div>
+  <div class="solucoes__texto">
+    <h6 class="eyebrow eyebrow--azul rv" data-rv>A solução para os seus pagamentos móveis</h6>
+    <h2 class="t-28 rv" data-rv style="--d:.1s">Criamos identidades de marca, experiências digitais e materiais impressos que ficam incríveis.</h2>
+    <div class="acordeao rv" data-rv style="--d:.2s">
+      <details open>
+        <summary><h4>Aumente a sua taxa de conversão</h4><i class="acordeao__seta"></i></summary>
+        <div class="acordeao__corpo"><p>Ajudamos inovadores e marcas por meio de percepção cultural, visão estratégica e inovação.</p></div>
+      </details>
+      <details>
+        <summary><h4>Criptografia de ponta a ponta nas mensagens</h4><i class="acordeao__seta"></i></summary>
+        <div class="acordeao__corpo"><p>Ajudamos inovadores e marcas por meio de percepção cultural, visão estratégica e inovação.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 4. SERVIÇOS (bloco escuro) -->
+<section class="servicos" id="servicos">
+  <div class="servicos__texto">
+    <h6 class="eyebrow eyebrow--clara rv" data-rv>A solução para o seu negócio</h6>
+    <h3 class="t-31 rv" data-rv style="--d:.1s">Ajudamos inovadores e marcas por meio de percepção cultural, visão estratégica e inovação.</h3>
+    <div class="rv" data-rv style="--d:.2s"><a class="btn" href="#contato">Enviar mensagem <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a></div>
+  </div>
+  <div class="servicos__grade">
+    <article class="icone-box rv" data-rv>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 8h22l8 8v24H10z"/><path d="M32 8v8h8"/><path d="M18 30l4-4 4 4 6-6"/></svg>
+      <h3>Negócios inovadores</h3><p>Somos apaixonados por resolver problemas com criatividade.</p>
+    </article>
+    <article class="icone-box rv" data-rv style="--d:.1s">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="7"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M9.9 9.9l4.2 4.2M33.9 33.9l4.2 4.2M9.9 38.1l4.2-4.2M33.9 14.1l4.2-4.2"/></svg>
+      <h3>Desenvolvimento de negócios</h3><p>Somos apaixonados por resolver problemas com criatividade.</p>
+    </article>
+    <article class="icone-box rv" data-rv style="--d:.15s">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="10" width="36" height="24" rx="2"/><path d="M14 28v-8M24 28V16M34 28v-4M18 40h12"/></svg>
+      <h3>Integração perfeita</h3><p>Somos apaixonados por resolver problemas com criatividade.</p>
+    </article>
+    <article class="icone-box rv" data-rv style="--d:.25s">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="6" width="24" height="36" rx="3"/><circle cx="24" cy="22" r="6"/><path d="M20 22l3 3 5-6M18 34h12"/></svg>
+      <h3>Estratégia para startups</h3><p>Somos apaixonados por resolver problemas com criatividade.</p>
+    </article>
+  </div>
+</section>
+
+<!-- 5. ESPECIALISTAS (cartões que viram) -->
+<section class="sec especialistas linhas">
+  <header class="centro">
+    <h2 class="t-38 rv" data-rv>Especialistas globais</h2>
+    <p class="rv" data-rv style="--d:.1s">Como parceira de grandes empresas, a equipe reúne mais de 9.000 parceiros de todos os portes e todos os potenciais.</p>
+  </header>
+  <div class="flips" data-cursor="explorar">
+    <article class="flip rv" data-rv>
+      <div class="flip__inner">
+        <div class="flip__face flip__frente" style="background-image:url('https://images.pexels.com/photos/1181326/pexels-photo-1181326.jpeg?auto=compress&cs=tinysrgb&w=1100&h=1000&fit=crop')">
+          <span class="chip chip--sm">finanças</span>
+          <h5><span>bancos e</span> seguradoras</h5>
+        </div>
+        <div class="flip__face flip__verso"><a class="btn" href="#contato">Enviar mensagem <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a></div>
+      </div>
+    </article>
+    <article class="flip rv" data-rv style="--d:.1s">
+      <div class="flip__inner">
+        <div class="flip__face flip__frente" style="background-image:url('https://images.pexels.com/photos/6585966/pexels-photo-6585966.jpeg?auto=compress&cs=tinysrgb&w=1100&h=1000&fit=crop')">
+          <span class="chip chip--sm">analytics</span>
+          <h5><span>integração de</span> big data para startups</h5>
+        </div>
+        <div class="flip__face flip__verso"><a class="btn" href="#contato">Enviar mensagem <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a></div>
+      </div>
+    </article>
+    <article class="flip rv" data-rv style="--d:.2s">
+      <div class="flip__inner">
+        <div class="flip__face flip__frente" style="background-image:url('https://images.pexels.com/photos/7752878/pexels-photo-7752878.jpeg?auto=compress&cs=tinysrgb&w=1100&h=1000&fit=crop')">
+          <span class="chip chip--sm">consultoria</span>
+          <h5><span>análise de</span> relatórios de big data</h5>
+        </div>
+        <div class="flip__face flip__verso"><a class="btn" href="#contato">Enviar mensagem <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 6. DEPOIMENTOS -->
+<section class="sec depoimentos linhas">
+  <header class="duas-col">
+    <h2 class="t-38 rv" data-rv>O que dizem sobre os nossos pagamentos móveis</h2>
+    <p class="t-18 rv" data-rv style="--d:.1s">Os serviços de pagamento estão disponíveis em aplicativos para celular e computador.</p>
+  </header>
+  <div class="carrossel" id="depoimentos" data-cursor="arrastar">
+    <div class="carrossel__trilho">
+      <article class="depo"><div class="depo__balao"><p>Muito satisfeita com o resultado: o site carrega muito mais rápido do que qualquer outro que já usei.</p></div><img src="https://images.pexels.com/photos/12311572/pexels-photo-12311572.jpeg?auto=compress&cs=tinysrgb&w=140&h=140&fit=crop" alt="" loading="lazy"><h3>— Nome Sobrenome</h3></article>
+      <article class="depo"><div class="depo__balao"><p>Muito satisfeita com o resultado: o site carrega muito mais rápido do que qualquer outro que já usei.</p></div><img src="https://images.pexels.com/photos/37148308/pexels-photo-37148308.jpeg?auto=compress&cs=tinysrgb&w=140&h=140&fit=crop" alt="" loading="lazy"><h3>— Nome Sobrenome</h3></article>
+      <article class="depo"><div class="depo__balao"><p>Muito satisfeita com o resultado: o site carrega muito mais rápido do que qualquer outro que já usei.</p></div><img src="https://images.pexels.com/photos/38197025/pexels-photo-38197025.jpeg?auto=compress&cs=tinysrgb&w=140&h=140&fit=crop" alt="" loading="lazy"><h3>— Nome Sobrenome</h3></article>
+      <article class="depo"><div class="depo__balao"><p>Muito satisfeita com o resultado: o site carrega muito mais rápido do que qualquer outro que já usei.</p></div><img src="https://images.pexels.com/photos/12311572/pexels-photo-12311572.jpeg?auto=compress&cs=tinysrgb&w=140&h=140&fit=crop" alt="" loading="lazy"><h3>— Nome Sobrenome</h3></article>
+      <article class="depo"><div class="depo__balao"><p>Muito satisfeita com o resultado: o site carrega muito mais rápido do que qualquer outro que já usei.</p></div><img src="https://images.pexels.com/photos/37148308/pexels-photo-37148308.jpeg?auto=compress&cs=tinysrgb&w=140&h=140&fit=crop" alt="" loading="lazy"><h3>— Nome Sobrenome</h3></article>
+      <article class="depo"><div class="depo__balao"><p>Muito satisfeita com o resultado: o site carrega muito mais rápido do que qualquer outro que já usei.</p></div><img src="https://images.pexels.com/photos/38197025/pexels-photo-38197025.jpeg?auto=compress&cs=tinysrgb&w=140&h=140&fit=crop" alt="" loading="lazy"><h3>— Nome Sobrenome</h3></article>
+    </div>
+    <div class="carrossel__nav">
+      <button type="button" class="carrossel__seta" data-dir="-1" aria-label="Anterior"><svg viewBox="0 0 16 16"><use href="#seta"/></svg></button>
+      <span class="carrossel__pag"><b data-pag-atual>1</b> — <span data-pag-total>6</span></span>
+      <button type="button" class="carrossel__seta" data-dir="1" aria-label="Próximo"><svg viewBox="0 0 16 16"><use href="#seta"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- 7. PARCEIROS -->
+<section class="parceiros">
+  <h6 class="eyebrow eyebrow--branca rv" data-rv>— Parceiros</h6>
+  <ul class="parceiros__grade rv" data-rv style="--d:.1s" aria-label="Parceiros">
+    <li><span class="marca-tx">apper</span></li>
+    <li><span class="marca-tx marca-tx--wide">VAV</span></li>
+    <li><span class="marca-tx marca-tx--mono">cirrus</span></li>
+    <li><span class="marca-tx marca-tx--ital">DHX</span></li>
+    <li><span class="marca-tx marca-tx--bold">AMBR</span></li>
+    <li><span class="marca-tx marca-tx--heavy">stripe</span></li>
+    <li><span class="marca-tx marca-tx--light">logitek</span></li>
+    <li><span class="marca-tx marca-tx--shield">ups</span></li>
+  </ul>
+</section>
+
+<!-- 8. BLOG -->
+<section class="sec posts linhas" id="blog">
+  <header class="duas-col">
+    <h2 class="t-38 rv" data-rv>Últimas publicações</h2>
+    <p class="t-18 rv" data-rv style="--d:.1s">Ajudamos inovadores e marcas por meio de percepção cultural, visão estratégica e inovação.</p>
+  </header>
+  <div class="posts__grade">
+    <article class="post rv" data-rv>
+      <a class="post__img" href="#"><img src="https://images.pexels.com/photos/12899134/pexels-photo-12899134.jpeg?auto=compress&cs=tinysrgb&w=900&h=490&fit=crop" alt="" loading="lazy"></a>
+      <h2><a href="#">5 motivos para investir em equipamentos próprios</a></h2>
+      <p>Se você quer ter sucesso, cerque-se do tipo certo de pessoas, que vão apoiar o seu caminho.</p>
+      <a class="ler" href="#">Continuar lendo</a>
+    </article>
+    <article class="post rv" data-rv style="--d:.1s">
+      <a class="post__img" href="#"><img src="https://images.pexels.com/photos/16808665/pexels-photo-16808665.jpeg?auto=compress&cs=tinysrgb&w=900&h=490&fit=crop" alt="" loading="lazy"></a>
+      <h2><a href="#">Tecnologia móvel no trabalho de campo</a></h2>
+      <p>Acreditamos que você deveria poder escolher mais de um motivo para avaliar.</p>
+      <a class="ler" href="#">Continuar lendo</a>
+    </article>
+    <article class="post rv" data-rv style="--d:.2s">
+      <a class="post__img" href="#"><img src="https://images.pexels.com/photos/9580577/pexels-photo-9580577.jpeg?auto=compress&cs=tinysrgb&w=900&h=490&fit=crop" alt="" loading="lazy"></a>
+      <h2><a href="#">História de sucesso: um empreendedor na cidade</a></h2>
+      <p>Acreditamos que você deveria poder escolher mais de um motivo para avaliar.</p>
+      <a class="ler" href="#">Continuar lendo</a>
+    </article>
+  </div>
+</section>
+
+<!-- 9. CHAMADA (faixa com imagem) -->
+<section class="chamada" id="contato" data-blob>
+  <div class="chamada__fundo" style="background-image:url('https://images.pexels.com/photos/5075787/pexels-photo-5075787.jpeg?auto=compress&cs=tinysrgb&w=2200')"></div>
+  <div class="chamada__conteudo">
+    <h2 class="rv" data-rv>Procurando uma parceria?</h2>
+    <div class="rv" data-rv style="--d:.1s"><a class="btn" href="mailto:contato@exemplo.com">Enviar mensagem</a></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== rodapé ===== -->
+<footer class="rodape">
+  <div class="rodape__topo">
+    <a class="rodape__logo" href="#inicio" aria-label="Início"><svg viewBox="0 0 48 32"><use href="#logo"/></svg></a>
+    <div>
+      <p class="rodape__chamada">Procurando uma parceria? Envie um e-mail para contato@exemplo.com e fale com a nossa equipe.</p>
+      <a class="btn" href="mailto:contato@exemplo.com">Enviar mensagem <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a>
+    </div>
+  </div>
+  <div class="rodape__meio">
+    <form class="rodape__news" onsubmit="return false">
+      <label class="sr" for="newsEmail">Seu e-mail</label>
+      <input id="newsEmail" type="email" placeholder="Digite o seu e-mail" autocomplete="email">
+      <button type="submit" aria-label="Assinar"><svg viewBox="0 0 24 24"><path d="M3 9l9 6 9-6M3 9v10h18V9M3 9l9-6 9 6"/></svg></button>
+    </form>
+    <nav aria-label="Menu do rodapé"><h3>Menu</h3><a href="#empresa">Empresa</a><a href="#">Carreiras</a><a href="#">Imprensa</a><a href="#blog">Nosso blog</a><a href="#">Política de privacidade</a></nav>
+    <div><h3>Localização</h3><p>Rua Exemplo, 290 — Campo Grande, MS</p><p>+55 67 0000-0000</p></div>
+  </div>
+  <div class="rodape__base">
+    <nav aria-label="Links do rodapé"><a href="#empresa">Empresa</a><a href="#">Carreiras</a><a href="#blog">Blog</a></nav>
+    <p>© 2026 Nome da Empresa.</p>
+  </div>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="logo" viewBox="0 0 48 32"><path d="M2 2h8l6 18 6-18h4l6 18 6-18h8L34 30h-6l-4-12-4 12h-6z" fill="currentColor"/></symbol>
+    <symbol id="seta" viewBox="0 0 16 16"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
