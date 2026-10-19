@@ -70,6 +70,28 @@ Perfis:
 **Aprovações**
 - Registro de aprovados, concurso, colocação e autorização da família para divulgar o nome. Geração automática da arte 合格 (sem foto) para Instagram e site.
 
+**Site institucional (CMS dentro do Admin)**
+- Edição de todos os textos do site (por chave), troca de imagens (herói, colagem, cartões, posts), ligar/desligar e reordenar módulos, contato (telefone, WhatsApp, Instagram, endereço), pré-visualização e publicação.
+- Produção: o Admin grava em `conteudo/site` no Firestore; o site lê esse documento ao abrir (`js/cms.js`) e aplica por cima do conteúdo padrão. Exportação em JSON para versionar no repositório.
+
+**Aniversariantes**
+- Admin: alunos e professores do mês, com agendamento de parabéns por WhatsApp. Professor: só os alunos das suas turmas.
+
+**Certificados online**
+- Tipos: participação, conclusão, aprovação, mérito, monitoria, frequência. Código único (INSTY-ANO-NNNNN), QR de verificação pública, assinatura da direção, impressão/PDF. Aluno e responsável veem e baixam os seus. Certificado emitido é imutável.
+
+**Carteirinha estudantil**
+- Frente com foto, nome, matrícula, curso, turma, nascimento, validade e QR de verificação; rodapé com responsável e telefone de emergência. Emissão individual ou em lote (PDF), pendências de foto, versão digital para a carteira do celular (Fase 7). Válida para meia-entrada (Lei 12.933).
+
+**Foto do aluno (uso interno)**
+- Enviada na matrícula pelo Admin, ou pelo próprio aluno/responsável em "Meu perfil". Usada só na carteirinha e no FaceID da chamada. Nunca aparece no site, no Instagram, em avisos ou em qualquer lugar público. Regras de Storage limitam leitura ao aluno, família, professores da turma e Admin.
+
+**Presença por FaceID**
+- Na chamada, o professor liga a câmera; o módulo de reconhecimento (projeto já existente do cliente) chama `INSTY.FaceID.reconhecido(alunoId)` a cada rosto identificado. A lista marca presença com horário, o professor revisa e aplica na chamada. O modelo facial fica no dispositivo/servidor da escola, não no Firebase; a LGPD trata dado biométrico como sensível: consentimento específico do responsável e política de retenção.
+
+**Arquivamento (nunca exclusão)**
+- Aluno não é apagado: Admin arquiva, com histórico preservado (matrícula, notas, presenças, financeiro, certificados). Reativação possível. Regras do Firestore bloqueiam `delete` em `alunos`.
+
 **Configurações**
 - Matriz de permissões por perfil e por pessoa.
 - LGPD: termos de consentimento, retenção, pedido de cópia e exclusão de dados, registro de acessos (quem viu o quê).

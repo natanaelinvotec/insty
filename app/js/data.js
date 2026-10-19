@@ -23,16 +23,17 @@ window.DB = (() => {
     disciplinas.forEach((d, k) => { const b = Math.min(10, Math.max(3, base + (rnd(i * 7 + k) - .5) * 2)); notas[d] = [1, 2, 3].map(j => +Math.min(10, Math.max(2, b + (j - 2) * .4 + (rnd(i + j + k) - .5))).toFixed(1)); });
     const freq = Math.round(82 + rnd(i * 3) * 18);
     const mens = ['Jul', 'Ago', 'Set', 'Out', 'Nov'].map((m, k) => ({ mes: m, valor: t.cursoId === 'fund' ? 790 : t.cursoId === 'medio' ? 890 : 980, status: k < 3 ? 'pago' : (k === 3 ? (rnd(i + 11) < .12 ? 'atraso' : 'pago') : 'aberto'), venc: `10/${String(7 + k).padStart(2, '0')}` }));
-    return { id: 'a' + (i + 1), nome, turmaId: t.id, cursoId: t.cursoId, responsavel: 'Família ' + nome.split(' ').slice(-1)[0], telefone: '(67) 9' + String(8000 + i * 37).padStart(4, '0') + '-' + String(1000 + i * 91).slice(-4), notas, freq, acessos: Math.round(rnd(i * 5) * 30), ultimoAcesso: Math.round(rnd(i * 9) * 12), mensalidades: mens, objetivo: t.cursoId === 'militar' ? t.nome : t.cursoId === 'enem' ? 'ENEM 2026' : 'Formação' };
+    const nasc = `${String(1 + (i * 7) % 28).padStart(2, '0')}/${String(1 + (i * 5) % 12).padStart(2, '0')}/${2008 + (i % 5)}`;
+    return { id: 'a' + (i + 1), matricula: '2026' + String(100 + i), nasc, foto: null, status: 'ativo', historico: [{ data: '03/02/2026', evento: 'Matrícula em ' + t.nome }], nome, turmaId: t.id, cursoId: t.cursoId, responsavel: 'Família ' + nome.split(' ').slice(-1)[0], telefone: '(67) 9' + String(8000 + i * 37).padStart(4, '0') + '-' + String(1000 + i * 91).slice(-4), notas, freq, acessos: Math.round(rnd(i * 5) * 30), ultimoAcesso: Math.round(rnd(i * 9) * 12), mensalidades: mens, objetivo: t.cursoId === 'militar' ? t.nome : t.cursoId === 'enem' ? 'ENEM 2026' : 'Formação' };
   });
 
   const professores = [
-    { id: 'p1', nome: 'Hiroshi Yasuda', disciplinas: ['Matemática'], turmas: ['m3', 'espcex', 'afaita'] },
-    { id: 'p2', nome: 'Camila Andrade', disciplinas: ['Português', 'Redação'], turmas: ['m1', 'm2', 'm3', 'enem1'] },
-    { id: 'p3', nome: 'Marcos Vieira', disciplinas: ['Física'], turmas: ['m2', 'm3', 'espcex', 'epcar'] },
-    { id: 'p4', nome: 'Renata Kimura', disciplinas: ['Química'], turmas: ['m1', 'm2', 'm3', 'enem2'] },
-    { id: 'p5', nome: 'André Lopes', disciplinas: ['História', 'Geografia'], turmas: ['f8', 'f9', 'm1'] },
-    { id: 'p6', nome: 'Paula Sakamoto', disciplinas: ['Inglês'], turmas: ['f8', 'f9', 'm1', 'm2'] },
+    { id: 'p1', nasc: '12/10/1978', nome: 'Hiroshi Yasuda', disciplinas: ['Matemática'], turmas: ['m3', 'espcex', 'afaita'] },
+    { id: 'p2', nasc: '27/10/1990', nome: 'Camila Andrade', disciplinas: ['Português', 'Redação'], turmas: ['m1', 'm2', 'm3', 'enem1'] },
+    { id: 'p3', nasc: '03/11/1985', nome: 'Marcos Vieira', disciplinas: ['Física'], turmas: ['m2', 'm3', 'espcex', 'epcar'] },
+    { id: 'p4', nasc: '19/06/1988', nome: 'Renata Kimura', disciplinas: ['Química'], turmas: ['m1', 'm2', 'm3', 'enem2'] },
+    { id: 'p5', nasc: '08/10/1982', nome: 'André Lopes', disciplinas: ['História', 'Geografia'], turmas: ['f8', 'f9', 'm1'] },
+    { id: 'p6', nasc: '30/03/1993', nome: 'Paula Sakamoto', disciplinas: ['Inglês'], turmas: ['f8', 'f9', 'm1', 'm2'] },
   ];
 
   const avisos = [

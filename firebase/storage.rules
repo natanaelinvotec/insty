@@ -7,6 +7,15 @@ service firebase.storage {
       allow write: if request.auth != null && (request.auth.token.role == 'admin' || (request.auth.token.role == 'prof' && turmaId in request.auth.token.turmas))
         && request.resource.contentType.matches('application/pdf|video/.*|application/zip|text/.*');
     }
+    match /fotos/{alunoId}/{file} {
+      // Foto do aluno: uso interno (carteirinha e FaceID). Nunca pública. Só imagem, até 2 MB.
+      allow read: if request.auth != null && (request.auth.token.role == 'admin' || request.auth.uid == alunoId
+        || (request.auth.token.role == 'pais' && alunoId in request.auth.token.alunoIds)
+        || (request.auth.token.role == 'prof' && firestore.get(/databases/(default)/documents/alunos/$(alunoId)).data.turmaId in request.auth.token.turmas));
+      allow write: if request.auth != null && (request.auth.token.role == 'admin' || request.auth.uid == alunoId
+        || (request.auth.token.role == 'pais' && alunoId in request.auth.token.alunoIds))
+        && request.resource.contentType.matches('image/.*') && request.resource.size < 2 * 1024 * 1024;
+    }
     match /documentos/{alunoId}/{file} {
       // RG, comprovantes, termos: só Admin lê; upload só Admin. Nunca servidos publicamente.
       allow read, write: if request.auth != null && request.auth.token.role == 'admin';

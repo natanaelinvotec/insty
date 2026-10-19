@@ -18,9 +18,10 @@ service cloud.firestore {
 
     match /alunos/{alunoId} {
       allow read: if isAdmin() || ehOAluno(alunoId) || responsavelDe(alunoId) || lecionaNa(resource.data.turmaId);
-      allow write: if isAdmin();
-      // nunca aceitar campo de foto
-      allow create, update: if isAdmin() && !('foto' in request.resource.data);
+      allow create: if isAdmin();
+      // Admin não apaga aluno: só arquiva (status) — histórico preservado
+      allow update: if isAdmin() || ((ehOAluno(alunoId) || responsavelDe(alunoId)) && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['fotoUrl']));
+      allow delete: if false;
     }
 
     match /avisos/{id} {
@@ -70,6 +71,12 @@ service cloud.firestore {
     }
 
     match /aprovacoes/{id} { allow read: if auth(); allow write: if isAdmin(); }
+    match /certificados/{id} {
+      allow read: if isAdmin() || ehOAluno(resource.data.alunoId) || responsavelDe(resource.data.alunoId);
+      allow create: if isAdmin(); allow update, delete: if false; // certificado emitido é imutável
+    }
+    match /conteudo/{doc} { allow read: if true; allow write: if isAdmin(); } // textos/imagens do site institucional
+    match /verificacao/{cod} { allow read: if true; allow write: if false; } // consulta pública de certificado/matrícula (dados mínimos)
 
     match /logs/{id} {
       allow read: if isAdmin() || (isPais() && resource.data.alunoId in request.auth.token.alunoIds);
