@@ -414,3 +414,30 @@ html[lang="ja"] .eyebrow{ letter-spacing:.2em; }
   .portal__lado{ min-height:200px; }
   .topo__portal{ padding:7px 12px; font-size:13px; }
 }
+
+/* ---------- princípios (galeria) ---------- */
+.principios__grade{ display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin-top:40px; }
+.prin{ position:relative; display:block; border-radius:4px; overflow:hidden; aspect-ratio:1; background:#F5F3EE; }
+.prin img{ width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease); }
+.prin:hover img{ transform:scale(1.06); }
+.prin span{ position:absolute; left:0; right:0; bottom:0; padding:10px 12px; font:700 13px/1.3 var(--f-titulo); color:#fff; background:linear-gradient(transparent, rgba(0,0,0,.6)); opacity:0; transform:translateY(8px); transition:opacity .4s, transform .4s var(--ease); }
+.prin:hover span{ opacity:1; transform:none; }
+.inspira{ display:flex; align-items:center; gap:24px; margin-top:34px; border-top:1px solid var(--linha); padding-top:22px; }
+.inspira__rotulo{ font:700 13px var(--f-titulo); letter-spacing:1px; text-transform:uppercase; white-space:nowrap; color:var(--cor-titulo); }
+.inspira__trilho{ overflow:hidden; flex:1; }
+.inspira__faixa{ display:flex; gap:48px; width:max-content; animation:insp 40s linear infinite; font:500 15px var(--f-titulo); color:#8C887F; white-space:nowrap; }
+.inspira__trilho:hover .inspira__faixa{ animation-play-state:paused; }
+.inspira__faixa span:hover{ color:var(--cor-acento); }
+@keyframes insp{ to{ transform:translateX(-50%); } }
+
+/* ---------- instagram ---------- */
+.instagram__grade{ display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:40px; }
+.ig{ display:block; border-radius:4px; overflow:hidden; aspect-ratio:4/5; position:relative; }
+.ig img{ width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease), filter .4s; }
+.ig::after{ content:"↗"; position:absolute; right:10px; top:8px; color:#fff; font-size:18px; opacity:0; transition:opacity .3s; text-shadow:0 1px 6px rgba(0,0,0,.4); }
+.ig:hover img{ transform:scale(1.05); }
+.ig:hover::after{ opacity:1; }
+.btn--inline{ margin-top:16px; display:inline-flex; }
+.btn--vermelho.btn--inline{ margin-top:16px; }
+@media (max-width:1100px){ .principios__grade{ grid-template-columns:repeat(3,1fr); } .instagram__grade{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:600px){ .principios__grade{ grid-template-columns:1fr 1fr; } .instagram__grade{ grid-template-columns:1fr 1fr; } .inspira{ flex-direction:column; align-items:flex-start; } }
