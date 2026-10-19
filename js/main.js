@@ -11,11 +11,11 @@
 (function () {
   'use strict';
   const d = document, $ = (s, r = d) => r.querySelector(s), $$ = (s, r = d) => Array.from(r.querySelectorAll(s));
-  const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduz = false;
   const temMouse = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* ---------- 1. cursor ---------- */
-  if (temMouse && !reduz) {
+  if (temMouse) {
     d.body.classList.add('tem-mouse');
     const cc = $('.cc'), dot = $('.cc__dot'), ring = $('.cc__ring'), solid = $('.cc__solid'), solidTx = $('.cc__solid i');
     // bolha vermelha: um elemento dentro de cada seção [data-blob], seguindo o mouse com atraso
