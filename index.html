@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Projeto INSTY — site institucional (base)</title>
-<meta name="description" content="Base do site institucional do Projeto INSTY. Estrutura, tipografia e interações reconstruídas; textos e fotos são provisórios.">
-<meta name="robots" content="noindex">
+<title data-i18n="meta.title">INSTY · Instituto Yassuda — Ensino que não cabe em uma foto</title>
+<meta name="description" data-i18n-content="meta.desc" content="Escola de tradição japonesa em Campo Grande – MS. Ensino Fundamental, Médio e preparatórios para EsPCEx, EPCAR, Colégio Naval, AFA, ITA, IME, ENEM e vestibulares.">
+<meta name="theme-color" content="#CE2F2F">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700&family=DM+Sans:wght@500;700&family=DM+Serif+Text:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700&family=DM+Sans:wght@500;700&family=DM+Serif+Text:ital@0;1&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@700;800&display=swap">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -25,13 +25,13 @@
 <aside class="barra" aria-label="Barra lateral">
   <button type="button" class="barra__menu" id="abrirMenu" aria-controls="gaveta" aria-expanded="false" aria-label="Abrir o menu">
     <span class="barra__menu-ico"><i></i><i></i></span>
-    <span class="barra__menu-tx">Menu</span>
+    <span class="barra__menu-tx" data-i18n="ui.menu">Menu</span>
   </button>
   <div class="barra__social">
-    <a href="#">Fb.</a><a href="#">Ig.</a><a href="#">Tw.</a><span>Follow us —</span>
+    <a href="#">Fb.</a><a href="#">Ig.</a><a href="#">Yt.</a><span data-i18n="ui.siga">Siga —</span>
   </div>
-  <div class="barra__lang">
-    <a href="#">En.</a><a href="#">Fr.</a><a href="#">Ge.</a>
+  <div class="barra__lang" aria-label="Idioma">
+    <a href="#" data-lang="pt" class="atual">Pt.</a><a href="#" data-lang="en">En.</a><a href="#" data-lang="ja">日本語</a>
   </div>
 </aside>
 
@@ -39,19 +39,21 @@
 <div class="gaveta" id="gaveta" aria-hidden="true">
   <div class="gaveta__fundo" data-fechar></div>
   <nav class="gaveta__painel" aria-label="Menu principal">
-    <a class="gaveta__logo" href="#inicio" aria-label="Início"><svg viewBox="0 0 48 32"><use href="#logo"/></svg></a>
+    <a class="gaveta__logo" href="#inicio" aria-label="Início"><img src="assets/img/logo.webp" alt="INSTY"></a>
     <button type="button" class="gaveta__fechar" data-fechar aria-label="Fechar o menu"><span></span><span></span></button>
     <ul class="gaveta__lista">
-      <li><a href="#inicio">Home</a></li>
-      <li><a href="#empresa">Company</a></li>
-      <li><a href="#solucoes">Solutions</a></li>
-      <li><a href="#servicos">Services</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#contato">Contact</a></li>
+      <li><a href="#inicio" data-i18n="nav.inicio">Início</a></li>
+      <li><a href="#historia" data-i18n="nav.escola">A escola</a></li>
+      <li><a href="#metodo" data-i18n="nav.metodo">Como ensinamos</a></li>
+      <li><a href="#pilares" data-i18n="nav.pilares">Pilares</a></li>
+      <li><a href="#diario" data-i18n="nav.diario">Diário</a></li>
+      <li><a href="#contato" data-i18n="nav.contato">Contato</a></li>
+      <li><a href="#" data-portal class="gaveta__portal" data-i18n="nav.portal">Portal do aluno</a></li>
     </ul>
     <div class="gaveta__rodape">
-      <a href="mailto:contato@exemplo.com">contato@exemplo.com</a>
-      <p>Tem uma dúvida? Estamos aqui para responder.</p>
+      <a href="https://wa.me/556733849044">(67) 3384-9044</a>
+      <p data-i18n="ui.duvida">Tem uma dúvida? Estamos aqui para responder.</p>
+      <div class="gaveta__lang"><a href="#" data-lang="pt">Português</a><a href="#" data-lang="en">English</a><a href="#" data-lang="ja">日本語</a></div>
     </div>
   </nav>
 </div>
@@ -59,15 +61,15 @@
 <!-- ===== cabeçalho ===== -->
 <header class="topo" id="topo">
   <nav class="topo__nav topo__nav--esq" aria-label="Principal, esquerda">
-    <a href="#inicio" class="atual">Home<sup>01</sup></a>
-    <a href="#empresa">Company<sup>02</sup></a>
-    <a href="#solucoes">Solutions<sup>03</sup></a>
+    <a href="#inicio" class="atual"><span data-i18n="nav.inicio">Início</span><sup>01</sup></a>
+    <a href="#historia"><span data-i18n="nav.escola">A escola</span><sup>02</sup></a>
+    <a href="#metodo"><span data-i18n="nav.metodo">Como ensinamos</span><sup>03</sup></a>
   </nav>
-  <a class="topo__logo" href="#inicio" aria-label="Início"><svg viewBox="0 0 48 32"><use href="#logo"/></svg></a>
+  <a class="topo__logo" href="#inicio" aria-label="Início"><img src="assets/img/logo.webp" alt="INSTY Colégio e Cursos"></a>
   <nav class="topo__nav topo__nav--dir" aria-label="Principal, direita">
-    <a href="#servicos">Services<sup>04</sup></a>
-    <a href="#blog">Blog<sup>05</sup></a>
-    <a href="#contato">Contact<sup>06</sup></a>
+    <a href="#pilares"><span data-i18n="nav.pilares">Pilares</span><sup>04</sup></a>
+    <a href="#diario"><span data-i18n="nav.diario">Diário</span><sup>05</sup></a>
+    <a href="#" class="topo__portal" data-portal><span data-i18n="nav.portal">Portal do aluno</span></a>
   </nav>
   <button type="button" class="topo__ham" id="abrirMenuMobile" aria-controls="gaveta" aria-expanded="false" aria-label="Abrir o menu"><i></i><i></i></button>
 </header>
@@ -76,109 +78,101 @@
 
 <!-- 1. HERÓI -->
 <section class="heroi" id="inicio" data-blob>
-  <div class="heroi__fundo" style="background-image:url('https://images.pexels.com/photos/5075787/pexels-photo-5075787.jpeg?auto=compress&cs=tinysrgb&w=2200')"></div>
+  <div class="heroi__fundo" style="background-image:url('assets/img/fachada.webp')"></div>
   <div class="heroi__veu"></div>
   <div class="heroi__conteudo">
-    <span class="chip rv" data-rv>Investimentos</span>
-    <h1 class="heroi__titulo" data-split><span class="sublinha">Investindo</span> em plataformas digitais.</h1>
-    <p class="heroi__sub rv" data-rv style="--d:.5s">Somos um estúdio digital que desenvolve <a href="#empresa">visão estratégica</a> e produtos por meio de percepção cultural e emoção.</p>
+    <span class="chip rv" data-rv data-i18n="hero.chip">Campo Grande – MS</span>
+    <h1 class="heroi__titulo" data-split data-i18n-html="hero.titulo"><span class="sublinha">Ensino</span> que não cabe em uma foto.</h1>
+    <p class="heroi__sub rv" data-rv style="--d:.5s" data-i18n-html="hero.sub">Uma escola de tradição japonesa onde o aluno aprende a <a href="#metodo">estudar sozinho</a>, a pesquisar e a ler o edital. Sem vitrine. Com resultado.</p>
   </div>
 </section>
 
 <!-- 2. NOSSA HISTÓRIA (faixa vermelha) -->
-<section class="historia" id="empresa">
-  <svg class="historia__marca" viewBox="0 0 48 32" aria-hidden="true"><path d="M2 2h8l6 18 6-18h4l6 18 6-18h8L34 30h-6l-4-12-4 12h-6z"/></svg>
+<section class="historia" id="historia">
+  <span class="historia__marca" aria-hidden="true">安田</span>
   <div class="historia__grade">
-    <h4 class="rv" data-rv>Nossa história</h4>
+    <h4 class="rv" data-rv data-i18n="hist.titulo">Nossa história</h4>
     <div class="rv" data-rv style="--d:.15s">
-      <p>Somos um estúdio digital que desenvolve <a href="#solucoes">visão estratégica</a> e produtos por meio de percepção cultural e emoção.</p>
-      <a class="btn" href="#contato">Enviar mensagem <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a>
+      <p data-i18n="hist.texto">Fundado pela família Yasuda, o INSTY cresceu sem propaganda de instalações. Cresceu pelos alunos que passaram e contaram.</p>
+      <a class="btn" href="https://wa.me/556733849044" target="_blank" rel="noopener"><span data-i18n="ui.visita">Agendar uma visita</span> <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a>
     </div>
   </div>
 </section>
 
-<!-- 3. SOLUÇÕES (colagem + acordeão) -->
-<section class="sec solucoes linhas" id="solucoes">
+<!-- 3. COMO ENSINAMOS (colagem + acordeão) -->
+<section class="sec solucoes linhas" id="metodo">
   <div class="solucoes__colagem" aria-hidden="true">
-    <figure class="plx" data-plx="-0.08"><img src="https://images.pexels.com/photos/5950690/pexels-photo-5950690.jpeg?auto=compress&cs=tinysrgb&w=500&h=530&fit=crop" alt="" loading="lazy"></figure>
-    <figure class="plx" data-plx="0.10"><img src="https://images.pexels.com/photos/8815841/pexels-photo-8815841.jpeg?auto=compress&cs=tinysrgb&w=560&h=720&fit=crop" alt="" loading="lazy"></figure>
-    <figure class="plx" data-plx="-0.16"><img src="https://images.pexels.com/photos/11738405/pexels-photo-11738405.jpeg?auto=compress&cs=tinysrgb&w=540&h=730&fit=crop" alt="" loading="lazy"></figure>
+    <figure class="plx" data-plx="-0.08"><img src="assets/img/c-shin.jpg" alt="" loading="lazy"></figure>
+    <figure class="plx" data-plx="0.10"><img src="assets/img/livro.jpg" alt="" loading="lazy" style="object-fit:cover;height:100%"></figure>
+    <figure class="plx" data-plx="-0.16"><img src="assets/img/c-sumi.jpg" alt="" loading="lazy"></figure>
   </div>
   <div class="solucoes__texto">
-    <h6 class="eyebrow eyebrow--azul rv" data-rv>A solução para os seus pagamentos móveis</h6>
-    <h2 class="t-28 rv" data-rv style="--d:.1s">Criamos identidades de marca, experiências digitais e materiais impressos que ficam incríveis.</h2>
+    <h6 class="eyebrow eyebrow--azul rv" data-rv data-i18n="met.eyebrow">Como ensinamos</h6>
+    <h2 class="t-28 rv" data-rv style="--d:.1s" data-i18n="met.titulo">Toda escola mostra o prédio. Nós mostramos o aluno que sai dele.</h2>
     <div class="acordeao rv" data-rv style="--d:.2s">
       <details open>
-        <summary><h4>Aumente a sua taxa de conversão</h4><i class="acordeao__seta"></i></summary>
-        <div class="acordeao__corpo"><p>Ajudamos inovadores e marcas por meio de percepção cultural, visão estratégica e inovação.</p></div>
+        <summary><h4 data-i18n="met.a1.t">Livros, não apostilas</h4><i class="acordeao__seta"></i></summary>
+        <div class="acordeao__corpo"><p data-i18n="met.a1.p">A apostila resume. O livro aprofunda. Nossos alunos estudam com material denso e extenso, e aprendem a extrair dele o que a prova cobra.</p></div>
       </details>
       <details>
-        <summary><h4>Criptografia de ponta a ponta nas mensagens</h4><i class="acordeao__seta"></i></summary>
-        <div class="acordeao__corpo"><p>Ajudamos inovadores e marcas por meio de percepção cultural, visão estratégica e inovação.</p></div>
+        <summary><h4 data-i18n="met.a2.t">Ninguém resolve a questão por você</h4><i class="acordeao__seta"></i></summary>
+        <div class="acordeao__corpo"><p data-i18n="met.a2.p">Quando o professor vai ao quadro, ele não entrega a resposta: traz outro exemplo, outra pergunta. O aluno chega sozinho ao resultado, e por isso não esquece.</p></div>
+      </details>
+      <details>
+        <summary><h4 data-i18n="met.a3.t">Aprender a pesquisar e a ler o edital</h4><i class="acordeao__seta"></i></summary>
+        <div class="acordeao__corpo"><p data-i18n="met.a3.p">O aluno aprende a investigar o conteúdo, a entender o edital de cada concurso e a planejar o estudo pelas regras da prova que vai fazer.</p></div>
       </details>
     </div>
   </div>
 </section>
 
-<!-- 4. SERVIÇOS (bloco escuro) -->
-<section class="servicos" id="servicos">
+<!-- 4. PILARES (bloco escuro) -->
+<section class="servicos" id="pilares">
   <div class="servicos__texto">
-    <h6 class="eyebrow eyebrow--clara rv" data-rv>A solução para o seu negócio</h6>
-    <h3 class="t-31 rv" data-rv style="--d:.1s">Ajudamos inovadores e marcas por meio de percepção cultural, visão estratégica e inovação.</h3>
-    <div class="rv" data-rv style="--d:.2s"><a class="btn" href="#contato">Enviar mensagem <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a></div>
+    <h6 class="eyebrow eyebrow--clara rv" data-rv data-i18n="pil.eyebrow">Os pilares da escola</h6>
+    <h3 class="t-31 rv" data-rv style="--d:.1s" data-i18n="pil.titulo">Tradição japonesa, filosofia 5S e uma cultura em que cada aluno descobre o próprio potencial.</h3>
+    <div class="rv" data-rv style="--d:.2s"><a class="btn" href="#contato"><span data-i18n="ui.mensagem">Enviar mensagem</span> <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a></div>
   </div>
   <div class="servicos__grade">
-    <article class="icone-box rv" data-rv>
-      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 8h22l8 8v24H10z"/><path d="M32 8v8h8"/><path d="M18 30l4-4 4 4 6-6"/></svg>
-      <h3>Negócios inovadores</h3><p>Somos apaixonados por resolver problemas com criatividade.</p>
-    </article>
-    <article class="icone-box rv" data-rv style="--d:.1s">
-      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="7"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M9.9 9.9l4.2 4.2M33.9 33.9l4.2 4.2M9.9 38.1l4.2-4.2M33.9 14.1l4.2-4.2"/></svg>
-      <h3>Desenvolvimento de negócios</h3><p>Somos apaixonados por resolver problemas com criatividade.</p>
-    </article>
-    <article class="icone-box rv" data-rv style="--d:.15s">
-      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="10" width="36" height="24" rx="2"/><path d="M14 28v-8M24 28V16M34 28v-4M18 40h12"/></svg>
-      <h3>Integração perfeita</h3><p>Somos apaixonados por resolver problemas com criatividade.</p>
-    </article>
-    <article class="icone-box rv" data-rv style="--d:.25s">
-      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="6" width="24" height="36" rx="3"/><circle cx="24" cy="22" r="6"/><path d="M20 22l3 3 5-6M18 34h12"/></svg>
-      <h3>Estratégia para startups</h3><p>Somos apaixonados por resolver problemas com criatividade.</p>
-    </article>
+    <article class="icone-box rv" data-rv><span class="icone-box__k" aria-hidden="true">自律</span><h3 data-i18n="pil.1.t">Autonomia</h3><p data-i18n="pil.1.p">O aluno organiza o próprio estudo, com parâmetros dados pela escola.</p></article>
+    <article class="icone-box rv" data-rv style="--d:.1s"><span class="icone-box__k" aria-hidden="true">誠実</span><h3 data-i18n="pil.2.t">Honestidade</h3><p data-i18n="pil.2.p">Mercadinho sem caixa, armários sem cadeado. A confiança é ensinada na prática.</p></article>
+    <article class="icone-box rv" data-rv style="--d:.15s"><span class="icone-box__k" aria-hidden="true">仲間</span><h3 data-i18n="pil.3.t">Companheirismo</h3><p data-i18n="pil.3.p">Turmas pequenas em que um ajuda o outro a passar.</p></article>
+    <article class="icone-box rv" data-rv style="--d:.25s"><span class="icone-box__k" aria-hidden="true">五S</span><h3 data-i18n="pil.4.t">Filosofia 5S</h3><p data-i18n="pil.4.p">Nascida no Japão do pós-guerra, organiza aqui a rotina de quem estuda para passar.</p></article>
   </div>
 </section>
 
-<!-- 5. ESPECIALISTAS (cartões que viram) -->
-<section class="sec especialistas linhas">
+<!-- 5. SEGMENTOS (cartões que viram) -->
+<section class="sec especialistas linhas" id="cursos">
   <header class="centro">
-    <h2 class="t-38 rv" data-rv>Especialistas globais</h2>
-    <p class="rv" data-rv style="--d:.1s">Como parceira de grandes empresas, a equipe reúne mais de 9.000 parceiros de todos os portes e todos os potenciais.</p>
+    <h2 class="t-38 rv" data-rv data-i18n="seg.titulo">Preparação focada</h2>
+    <p class="rv" data-rv style="--d:.1s" data-i18n="seg.sub">Ensino Fundamental, Médio e preparatórios. Cobramos à parte apenas inscrições, vestibulares e pesquisas.</p>
   </header>
   <div class="flips" data-cursor="explorar">
     <article class="flip rv" data-rv>
       <div class="flip__inner">
-        <div class="flip__face flip__frente" style="background-image:url('https://images.pexels.com/photos/1181326/pexels-photo-1181326.jpeg?auto=compress&cs=tinysrgb&w=1100&h=1000&fit=crop')">
-          <span class="chip chip--sm">finanças</span>
-          <h5><span>bancos e</span> seguradoras</h5>
+        <div class="flip__face flip__frente" style="background-image:url('assets/img/p-fundamental.jpg')">
+          <span class="chip chip--sm" data-i18n="seg.1.chip">Fundamental</span>
+          <h5><span data-i18n="seg.1.a">Base sólida</span> <span data-i18n="seg.1.b">com turmas pequenas</span></h5>
         </div>
-        <div class="flip__face flip__verso"><a class="btn" href="#contato">Enviar mensagem <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a></div>
+        <div class="flip__face flip__verso"><a class="btn" href="https://wa.me/556733849044" target="_blank" rel="noopener"><span data-i18n="ui.visita">Agendar uma visita</span> <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a></div>
       </div>
     </article>
     <article class="flip rv" data-rv style="--d:.1s">
       <div class="flip__inner">
-        <div class="flip__face flip__frente" style="background-image:url('https://images.pexels.com/photos/6585966/pexels-photo-6585966.jpeg?auto=compress&cs=tinysrgb&w=1100&h=1000&fit=crop')">
-          <span class="chip chip--sm">analytics</span>
-          <h5><span>integração de</span> big data para startups</h5>
+        <div class="flip__face flip__frente" style="background-image:url('assets/img/p-medio.jpg')">
+          <span class="chip chip--sm" data-i18n="seg.2.chip">Ensino Médio</span>
+          <h5><span data-i18n="seg.2.a">Orientação individual</span> <span data-i18n="seg.2.b">para rendimento máximo</span></h5>
         </div>
-        <div class="flip__face flip__verso"><a class="btn" href="#contato">Enviar mensagem <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a></div>
+        <div class="flip__face flip__verso"><a class="btn" href="https://wa.me/556733849044" target="_blank" rel="noopener"><span data-i18n="ui.visita">Agendar uma visita</span> <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a></div>
       </div>
     </article>
     <article class="flip rv" data-rv style="--d:.2s">
       <div class="flip__inner">
-        <div class="flip__face flip__frente" style="background-image:url('https://images.pexels.com/photos/7752878/pexels-photo-7752878.jpeg?auto=compress&cs=tinysrgb&w=1100&h=1000&fit=crop')">
-          <span class="chip chip--sm">consultoria</span>
-          <h5><span>análise de</span> relatórios de big data</h5>
+        <div class="flip__face flip__frente" style="background-image:url('assets/img/p-prep.jpg')">
+          <span class="chip chip--sm" data-i18n="seg.3.chip">Preparatórios</span>
+          <h5><span data-i18n="seg.3.a">EsPCEx, EPCAR, AFA, ITA, IME,</span> <span data-i18n="seg.3.b">Colégio Naval, ENEM e vestibulares</span></h5>
         </div>
-        <div class="flip__face flip__verso"><a class="btn" href="#contato">Enviar mensagem <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a></div>
+        <div class="flip__face flip__verso"><a class="btn" href="https://wa.me/556733849044" target="_blank" rel="noopener"><span data-i18n="ui.visita">Agendar uma visita</span> <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a></div>
       </div>
     </article>
   </div>
@@ -187,75 +181,73 @@
 <!-- 6. DEPOIMENTOS -->
 <section class="sec depoimentos linhas">
   <header class="duas-col">
-    <h2 class="t-38 rv" data-rv>O que dizem sobre os nossos pagamentos móveis</h2>
-    <p class="t-18 rv" data-rv style="--d:.1s">Os serviços de pagamento estão disponíveis em aplicativos para celular e computador.</p>
+    <h2 class="t-38 rv" data-rv data-i18n="dep.titulo">O que as famílias dizem</h2>
+    <p class="t-18 rv" data-rv style="--d:.1s" data-i18n="dep.sub">Depoimentos publicados com autorização. Sem fotos, por escolha da escola.</p>
   </header>
   <div class="carrossel" id="depoimentos" data-cursor="arrastar">
     <div class="carrossel__trilho">
-      <article class="depo"><div class="depo__balao"><p>Muito satisfeita com o resultado: o site carrega muito mais rápido do que qualquer outro que já usei.</p></div><img src="https://images.pexels.com/photos/12311572/pexels-photo-12311572.jpeg?auto=compress&cs=tinysrgb&w=140&h=140&fit=crop" alt="" loading="lazy"><h3>— Nome Sobrenome</h3></article>
-      <article class="depo"><div class="depo__balao"><p>Muito satisfeita com o resultado: o site carrega muito mais rápido do que qualquer outro que já usei.</p></div><img src="https://images.pexels.com/photos/37148308/pexels-photo-37148308.jpeg?auto=compress&cs=tinysrgb&w=140&h=140&fit=crop" alt="" loading="lazy"><h3>— Nome Sobrenome</h3></article>
-      <article class="depo"><div class="depo__balao"><p>Muito satisfeita com o resultado: o site carrega muito mais rápido do que qualquer outro que já usei.</p></div><img src="https://images.pexels.com/photos/38197025/pexels-photo-38197025.jpeg?auto=compress&cs=tinysrgb&w=140&h=140&fit=crop" alt="" loading="lazy"><h3>— Nome Sobrenome</h3></article>
-      <article class="depo"><div class="depo__balao"><p>Muito satisfeita com o resultado: o site carrega muito mais rápido do que qualquer outro que já usei.</p></div><img src="https://images.pexels.com/photos/12311572/pexels-photo-12311572.jpeg?auto=compress&cs=tinysrgb&w=140&h=140&fit=crop" alt="" loading="lazy"><h3>— Nome Sobrenome</h3></article>
-      <article class="depo"><div class="depo__balao"><p>Muito satisfeita com o resultado: o site carrega muito mais rápido do que qualquer outro que já usei.</p></div><img src="https://images.pexels.com/photos/37148308/pexels-photo-37148308.jpeg?auto=compress&cs=tinysrgb&w=140&h=140&fit=crop" alt="" loading="lazy"><h3>— Nome Sobrenome</h3></article>
-      <article class="depo"><div class="depo__balao"><p>Muito satisfeita com o resultado: o site carrega muito mais rápido do que qualquer outro que já usei.</p></div><img src="https://images.pexels.com/photos/38197025/pexels-photo-38197025.jpeg?auto=compress&cs=tinysrgb&w=140&h=140&fit=crop" alt="" loading="lazy"><h3>— Nome Sobrenome</h3></article>
+      <article class="depo"><div class="depo__balao"><p data-i18n="dep.1.p">Meu filho passou a estudar sozinho. Eu não precisei mais mandar. Isso não tem preço.</p></div><span class="depo__ini">M</span><h3 data-i18n="dep.1.a">— Mãe de aluno aprovado</h3></article>
+      <article class="depo"><div class="depo__balao"><p data-i18n="dep.2.p">Aprendi a ler o edital antes de abrir o livro. Na prova, eu sabia exatamente o que esperar.</p></div><span class="depo__ini">E</span><h3 data-i18n="dep.2.a">— Ex-aluno, aprovado na EsPCEx</h3></article>
+      <article class="depo"><div class="depo__balao"><p data-i18n="dep.3.p">A direção me atendeu no mesmo dia. Em escola grande, eu nem sabia quem era o diretor.</p></div><span class="depo__ini">P</span><h3 data-i18n="dep.3.a">— Pai de aluna do 2º ano</h3></article>
+      <article class="depo"><div class="depo__balao"><p data-i18n="dep.4.p">No recesso a escola ficou aberta e minha filha pediu para ir. Eu não acreditei.</p></div><span class="depo__ini">M</span><h3 data-i18n="dep.4.a">— Mãe de aluna do 3º ano</h3></article>
     </div>
     <div class="carrossel__nav">
       <button type="button" class="carrossel__seta" data-dir="-1" aria-label="Anterior"><svg viewBox="0 0 16 16"><use href="#seta"/></svg></button>
-      <span class="carrossel__pag"><b data-pag-atual>1</b> — <span data-pag-total>6</span></span>
+      <span class="carrossel__pag"><b data-pag-atual>1</b> — <span data-pag-total>4</span></span>
       <button type="button" class="carrossel__seta" data-dir="1" aria-label="Próximo"><svg viewBox="0 0 16 16"><use href="#seta"/></svg></button>
     </div>
   </div>
 </section>
 
-<!-- 7. PARCEIROS -->
+<!-- 7. CONCURSOS -->
 <section class="parceiros">
-  <h6 class="eyebrow eyebrow--branca rv" data-rv>— Parceiros</h6>
-  <ul class="parceiros__grade rv" data-rv style="--d:.1s" aria-label="Parceiros">
-    <li><span class="marca-tx">apper</span></li>
-    <li><span class="marca-tx marca-tx--wide">VAV</span></li>
-    <li><span class="marca-tx marca-tx--mono">cirrus</span></li>
-    <li><span class="marca-tx marca-tx--ital">DHX</span></li>
-    <li><span class="marca-tx marca-tx--bold">AMBR</span></li>
-    <li><span class="marca-tx marca-tx--heavy">stripe</span></li>
-    <li><span class="marca-tx marca-tx--light">logitek</span></li>
-    <li><span class="marca-tx marca-tx--shield">ups</span></li>
+  <h6 class="eyebrow eyebrow--branca rv" data-rv data-i18n="con.eyebrow">— Preparamos para</h6>
+  <ul class="parceiros__grade rv" data-rv style="--d:.1s" aria-label="Concursos">
+    <li><span class="marca-tx">CMCG</span></li>
+    <li><span class="marca-tx marca-tx--wide">EPCAR</span></li>
+    <li><span class="marca-tx marca-tx--mono">Colégio Naval</span></li>
+    <li><span class="marca-tx marca-tx--ital">AFA</span></li>
+    <li><span class="marca-tx marca-tx--bold">ITA</span></li>
+    <li><span class="marca-tx marca-tx--heavy">IME</span></li>
+    <li><span class="marca-tx marca-tx--light">EsPCEx</span></li>
+    <li><span class="marca-tx marca-tx--shield">ENEM</span></li>
   </ul>
 </section>
 
-<!-- 8. BLOG -->
-<section class="sec posts linhas" id="blog">
+<!-- 8. DIÁRIO -->
+<section class="sec posts linhas" id="diario">
   <header class="duas-col">
-    <h2 class="t-38 rv" data-rv>Últimas publicações</h2>
-    <p class="t-18 rv" data-rv style="--d:.1s">Ajudamos inovadores e marcas por meio de percepção cultural, visão estratégica e inovação.</p>
+    <h2 class="t-38 rv" data-rv data-i18n="dia.titulo">Diário da escola</h2>
+    <p class="t-18 rv" data-rv style="--d:.1s" data-i18n="dia.sub">Histórias de dentro, sem fotos de dentro. Publicadas também no Instagram.</p>
   </header>
   <div class="posts__grade">
     <article class="post rv" data-rv>
-      <a class="post__img" href="#"><img src="https://images.pexels.com/photos/12899134/pexels-photo-12899134.jpeg?auto=compress&cs=tinysrgb&w=900&h=490&fit=crop" alt="" loading="lazy"></a>
-      <h2><a href="#">5 motivos para investir em equipamentos próprios</a></h2>
-      <p>Se você quer ter sucesso, cerque-se do tipo certo de pessoas, que vão apoiar o seu caminho.</p>
-      <a class="ler" href="#">Continuar lendo</a>
+      <a class="post__img" href="#"><img src="assets/img/post-mondai.jpg" alt="" loading="lazy"></a>
+      <h2><a href="#" data-i18n="dia.1.t">O mercadinho sem caixa</a></h2>
+      <p data-i18n="dia.1.p">O aluno deixa o dinheiro e pega o próprio troco. Há anos funciona assim. Nunca faltou nada.</p>
+      <a class="ler" href="#" data-i18n="ui.ler">Continuar lendo</a>
     </article>
     <article class="post rv" data-rv style="--d:.1s">
-      <a class="post__img" href="#"><img src="https://images.pexels.com/photos/16808665/pexels-photo-16808665.jpeg?auto=compress&cs=tinysrgb&w=900&h=490&fit=crop" alt="" loading="lazy"></a>
-      <h2><a href="#">Tecnologia móvel no trabalho de campo</a></h2>
-      <p>Acreditamos que você deveria poder escolher mais de um motivo para avaliar.</p>
-      <a class="ler" href="#">Continuar lendo</a>
+      <a class="post__img" href="#"><img src="assets/img/post-rei.jpg" alt="" loading="lazy"></a>
+      <h2><a href="#" data-i18n="dia.2.t">EsPCEx 2027: o que muda no edital</a></h2>
+      <p data-i18n="dia.2.p">Lemos o edital inteiro e traduzimos para o aluno e para a família.</p>
+      <a class="ler" href="#" data-i18n="ui.ler">Continuar lendo</a>
     </article>
     <article class="post rv" data-rv style="--d:.2s">
-      <a class="post__img" href="#"><img src="https://images.pexels.com/photos/9580577/pexels-photo-9580577.jpeg?auto=compress&cs=tinysrgb&w=900&h=490&fit=crop" alt="" loading="lazy"></a>
-      <h2><a href="#">História de sucesso: um empreendedor na cidade</a></h2>
-      <p>Acreditamos que você deveria poder escolher mais de um motivo para avaliar.</p>
-      <a class="ler" href="#">Continuar lendo</a>
+      <a class="post__img" href="#"><img src="assets/img/post-kyu.jpg" alt="" loading="lazy"></a>
+      <h2><a href="#" data-i18n="dia.3.t">No recesso, a escola abriu</a></h2>
+      <p data-i18n="dia.3.p">Ficou aberta para quem quisesse estudar. Os alunos vieram, sem chamada e sem nota.</p>
+      <a class="ler" href="#" data-i18n="ui.ler">Continuar lendo</a>
     </article>
   </div>
 </section>
 
 <!-- 9. CHAMADA (faixa com imagem) -->
 <section class="chamada" id="contato" data-blob>
-  <div class="chamada__fundo" style="background-image:url('https://images.pexels.com/photos/5075787/pexels-photo-5075787.jpeg?auto=compress&cs=tinysrgb&w=2200')"></div>
+  <div class="chamada__fundo" style="background-image:url('assets/img/fachada.webp')"></div>
   <div class="chamada__conteudo">
-    <h2 class="rv" data-rv>Procurando uma parceria?</h2>
-    <div class="rv" data-rv style="--d:.1s"><a class="btn" href="mailto:contato@exemplo.com">Enviar mensagem</a></div>
+    <h2 class="rv" data-rv data-i18n="cha.titulo">Quer conhecer pessoalmente?</h2>
+    <div class="rv" data-rv style="--d:.1s"><a class="btn" href="https://wa.me/556733849044" target="_blank" rel="noopener" data-i18n="ui.visita">Agendar uma visita</a></div>
   </div>
 </section>
 
@@ -264,34 +256,65 @@
 <!-- ===== rodapé ===== -->
 <footer class="rodape">
   <div class="rodape__topo">
-    <a class="rodape__logo" href="#inicio" aria-label="Início"><svg viewBox="0 0 48 32"><use href="#logo"/></svg></a>
+    <a class="rodape__logo" href="#inicio" aria-label="Início"><img src="assets/img/logo.webp" alt="INSTY"></a>
     <div>
-      <p class="rodape__chamada">Procurando uma parceria? Envie um e-mail para contato@exemplo.com e fale com a nossa equipe.</p>
-      <a class="btn" href="mailto:contato@exemplo.com">Enviar mensagem <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a>
+      <p class="rodape__chamada" data-i18n="rod.chamada">Não mostramos a escola em fotos. Mostramos ao vivo, com hora marcada, para a família e para o aluno.</p>
+      <a class="btn" href="https://wa.me/556733849044" target="_blank" rel="noopener"><span data-i18n="ui.whats">Falar pelo WhatsApp</span> <svg viewBox="0 0 16 16"><use href="#seta"/></svg></a>
     </div>
   </div>
   <div class="rodape__meio">
-    <form class="rodape__news" onsubmit="return false">
-      <label class="sr" for="newsEmail">Seu e-mail</label>
-      <input id="newsEmail" type="email" placeholder="Digite o seu e-mail" autocomplete="email">
+    <form class="rodape__news" id="newsForm">
+      <label class="sr" for="newsEmail" data-i18n="rod.email">Seu e-mail</label>
+      <input id="newsEmail" type="email" data-i18n-placeholder="rod.emailph" placeholder="Seu e-mail para receber o Diário" autocomplete="email">
       <button type="submit" aria-label="Assinar"><svg viewBox="0 0 24 24"><path d="M3 9l9 6 9-6M3 9v10h18V9M3 9l9-6 9 6"/></svg></button>
     </form>
-    <nav aria-label="Menu do rodapé"><h3>Menu</h3><a href="#empresa">Empresa</a><a href="#">Carreiras</a><a href="#">Imprensa</a><a href="#blog">Nosso blog</a><a href="#">Política de privacidade</a></nav>
-    <div><h3>Localização</h3><p>Rua Exemplo, 290 — Campo Grande, MS</p><p>+55 67 0000-0000</p></div>
+    <nav aria-label="Menu do rodapé"><h3 data-i18n="ui.menu">Menu</h3><a href="#historia" data-i18n="nav.escola">A escola</a><a href="#metodo" data-i18n="nav.metodo">Como ensinamos</a><a href="#cursos" data-i18n="nav.cursos">Cursos</a><a href="#diario" data-i18n="nav.diario">Diário</a><a href="#" data-portal data-i18n="nav.portal">Portal do aluno</a></nav>
+    <div><h3 data-i18n="rod.onde">Onde</h3><p data-i18n="rod.end">Instituto Yassuda · Colégio e Cursos<br>Campo Grande – MS</p><p>(67) 3384-9044</p></div>
   </div>
   <div class="rodape__base">
-    <nav aria-label="Links do rodapé"><a href="#empresa">Empresa</a><a href="#">Carreiras</a><a href="#blog">Blog</a></nav>
-    <p>© 2026 Nome da Empresa.</p>
+    <nav aria-label="Links do rodapé"><a href="#historia" data-i18n="nav.escola">A escola</a><a href="#diario" data-i18n="nav.diario">Diário</a><a href="#" data-i18n="rod.lgpd">Privacidade · LGPD</a></nav>
+    <p data-i18n="rod.copy">© 2026 INSTY · Instituto Yassuda. Nenhuma imagem de aluno é publicada.</p>
   </div>
 </footer>
 
+<!-- ===== PORTAL DO ALUNO (modal) ===== -->
+<div class="portal" id="portal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="portalTitulo">
+  <div class="portal__fundo" data-portal-fechar></div>
+  <div class="portal__caixa">
+    <button type="button" class="portal__fechar" data-portal-fechar aria-label="Fechar"><span></span><span></span></button>
+    <div class="portal__lado">
+      <span class="portal__kanji" aria-hidden="true">学</span>
+      <h2 id="portalTitulo" data-i18n="por.titulo">Portal do aluno</h2>
+      <p data-i18n="por.sub">Aulas, simulados, agenda e boletim. A família acompanha pela área dos pais.</p>
+      <div class="portal__lang" aria-label="Idioma">
+        <button type="button" data-lang="pt">Português</button><button type="button" data-lang="en">English</button><button type="button" data-lang="ja">日本語</button>
+      </div>
+    </div>
+    <form class="portal__form" id="portalForm">
+      <div class="portal__abas" role="tablist">
+        <button type="button" class="atual" data-perfil="aluno" data-i18n="por.aluno">Aluno</button>
+        <button type="button" data-perfil="pais" data-i18n="por.pais">Responsável</button>
+        <button type="button" data-perfil="coord" data-i18n="por.coord">Coordenação</button>
+      </div>
+      <label for="pUser" data-i18n="por.user">Usuário ou e-mail</label>
+      <input id="pUser" type="text" autocomplete="username" required>
+      <label for="pPass" data-i18n="por.senha">Senha</label>
+      <input id="pPass" type="password" autocomplete="current-password" required>
+      <button class="btn btn--vermelho" type="submit"><span data-i18n="por.entrar">Entrar</span> <svg viewBox="0 0 16 16"><use href="#seta"/></svg></button>
+      <a href="#" class="portal__esqueci" data-i18n="por.esqueci">Esqueci a senha</a>
+      <p class="portal__aviso" data-i18n="por.aviso">Acesso fornecido pela coordenação. Dados protegidos conforme a LGPD.</p>
+    </form>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="logo" viewBox="0 0 48 32"><path d="M2 2h8l6 18 6-18h4l6 18 6-18h8L34 30h-6l-4-12-4 12h-6z" fill="currentColor"/></symbol>
     <symbol id="seta" viewBox="0 0 16 16"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </defs>
 </svg>
 
+<script src="js/i18n.js"></script>
 <script src="js/main.js" defer></script>
 </body>
 </html>

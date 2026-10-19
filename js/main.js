@@ -3,7 +3,7 @@
       disco branco "Arraste/Explorar" sobre carrosséis e cartões; bolha vermelha de 390px nas seções com foto
       (herói e chamada final), como no vídeo de referência.
    2. Gaveta (menu lateral) — abre pela barra lateral ou pelo hambúrguer no celular.
-   3. Cabeçalho some ao rolar para baixo eh volta ao subir.
+   3. Cabeçalho some ao rolar para baixo e volta ao subir.
    4. Título do herói: letras entram uma a uma; sublinhado desenhado por SVG.
    5. Revelação ao rolar (IntersectionObserver) e parallax da colagem.
    6. Carrossel de depoimentos (rolagem nativa com snap + setas + "1 — 6").
@@ -15,7 +15,7 @@
   const temMouse = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* ---------- 1. cursor ---------- */
-  if (temMouse) {
+  if (temMouse && !reduz) {
     d.body.classList.add('tem-mouse');
     const cc = $('.cc'), dot = $('.cc__dot'), ring = $('.cc__ring'), solid = $('.cc__solid'), solidTx = $('.cc__solid i');
     // bolha vermelha: um elemento dentro de cada seção [data-blob], seguindo o mouse com atraso
@@ -42,7 +42,7 @@
       cc.classList.toggle('link', !!t.closest('a, button, summary, input, label'));
       const alvo = t.closest('[data-cursor]');
       cc.classList.toggle('solid', !!alvo);
-      if (alvo) solidTx.textContent = alvo.dataset.cursor === 'explorar' ? 'Explorar' : 'Arraste';
+      if (alvo) { solidTx.dataset.k = alvo.dataset.cursor; solidTx.textContent = window.INSTY_t(alvo.dataset.cursor === 'explorar' ? 'ui.explorar' : 'ui.arraste'); }
       cc.classList.toggle('blob', !!t.closest('[data-blob]'));
       cc.classList.toggle('escuro', !!t.closest('.servicos, .parceiros, .rodape, .historia, .flip__verso'));
     });
@@ -74,9 +74,11 @@
   };
   addEventListener('scroll', () => requestAnimationFrame(aoRolar), { passive: true });
 
-  /* ---------- 4. título do herói ---------- */
+  /* ---------- 4. título do herói (remontado a cada troca de idioma) ---------- */
   const h1 = $('[data-split]');
-  if (h1) {
+  function montarTitulo() {
+    if (!h1) return;
+    h1.classList.remove('pronto');
     let n = 0;
     const dividir = (no) => {
       Array.from(no.childNodes).forEach((c) => {
@@ -95,12 +97,29 @@
     };
     dividir(h1);
     const sub = $('.sublinha', h1);
-    if (sub) {
+    if (sub && !$('svg', sub)) {
       // traço "à mão" sob a primeira palavra (desenhado com stroke-dashoffset)
       sub.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 30 C 60 18, 120 14, 180 16 S 270 26, 296 22"/></svg>');
     }
     requestAnimationFrame(() => requestAnimationFrame(() => h1.classList.add('pronto')));
   }
+  montarTitulo();
+  d.addEventListener('insty:lang', () => { montarTitulo(); const i = $('.cc__solid i'); if (i) i.textContent = window.INSTY_t(i.dataset.k === 'explorar' ? 'ui.explorar' : 'ui.arraste'); });
+
+  /* ---------- 4b. portal do aluno + avisos ---------- */
+  const toast = (m) => { const t = $('#toast'); if (!t) return; t.textContent = m; t.classList.add('mostra'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('mostra'), 3200); };
+  const portal = $('#portal');
+  if (portal) {
+    const abrirPortal = (sim) => { portal.setAttribute('aria-hidden', String(!sim)); d.body.style.overflow = sim ? 'hidden' : ''; if (sim) setTimeout(() => $('#pUser').focus(), 350); };
+    $$('[data-portal]').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); abrir(false); abrirPortal(true); }));
+    $$('[data-portal-fechar]').forEach((b) => b.addEventListener('click', () => abrirPortal(false)));
+    d.addEventListener('keydown', (e) => { if (e.key === 'Escape') abrirPortal(false); });
+    $$('.portal__abas button').forEach((b) => b.addEventListener('click', () => { $$('.portal__abas button').forEach((x) => x.classList.toggle('atual', x === b)); portal.dataset.perfil = b.dataset.perfil; }));
+    $('#portalForm').addEventListener('submit', (e) => { e.preventDefault(); toast(window.INSTY_t('por.embreve')); });
+    $('.portal__esqueci').addEventListener('click', (e) => { e.preventDefault(); toast(window.INSTY_t('por.embreve')); });
+  }
+  const news = $('#newsForm');
+  if (news) news.addEventListener('submit', (e) => { e.preventDefault(); toast(window.INSTY_t('news.ok')); news.reset(); });
 
   /* ---------- 5. revelação + parallax ---------- */
   const rvs = $$('[data-rv]');
