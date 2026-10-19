@@ -1,0 +1,80 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Perfis vêm de custom claims: role (admin|prof|aluno|pais), turmas[], alunoIds[]
+    function auth() { return request.auth != null; }
+    function role() { return request.auth.token.role; }
+    function isAdmin() { return auth() && role() == 'admin'; }
+    function isProf() { return auth() && role() == 'prof'; }
+    function isAluno() { return auth() && role() == 'aluno'; }
+    function isPais() { return auth() && role() == 'pais'; }
+    function lecionaNa(turmaId) { return isProf() && turmaId in request.auth.token.turmas; }
+    function responsavelDe(alunoId) { return isPais() && alunoId in request.auth.token.alunoIds; }
+    function ehOAluno(alunoId) { return isAluno() && request.auth.uid == alunoId; }
+
+    match /cursos/{id} { allow read: if auth(); allow write: if isAdmin(); }
+    match /turmas/{id} { allow read: if auth(); allow write: if isAdmin(); }
+    match /professores/{id} { allow read: if isAdmin() || (isProf() && request.auth.uid == id); allow write: if isAdmin(); }
+
+    match /alunos/{alunoId} {
+      allow read: if isAdmin() || ehOAluno(alunoId) || responsavelDe(alunoId) || lecionaNa(resource.data.turmaId);
+      allow write: if isAdmin();
+      // nunca aceitar campo de foto
+      allow create, update: if isAdmin() && !('foto' in request.resource.data);
+    }
+
+    match /avisos/{id} {
+      allow read: if auth();
+      allow create: if isAdmin() || (isProf() && lecionaNa(request.resource.data.turmaId));
+      allow update, delete: if isAdmin() || (isProf() && resource.data.autor == request.auth.uid);
+    }
+
+    match /materiais/{id} {
+      allow read: if auth();
+      allow create: if isAdmin() || (isProf() && lecionaNa(request.resource.data.turmaId));
+      allow update, delete: if isAdmin() || (isProf() && resource.data.prof == request.auth.uid);
+    }
+
+    match /avaliacoes/{id} {
+      allow read: if auth();
+      allow write: if isAdmin() || (isProf() && lecionaNa(request.resource.data.turmaId));
+    }
+
+    match /notas/{id} {
+      // doc: { alunoId, turmaId, avaliacaoId, valor, publicada }
+      allow read: if isAdmin() || lecionaNa(resource.data.turmaId)
+        || ((ehOAluno(resource.data.alunoId) || responsavelDe(resource.data.alunoId)) && resource.data.publicada == true);
+      allow write: if isAdmin() || lecionaNa(request.resource.data.turmaId);
+    }
+
+    match /presencas/{id} {
+      allow read: if isAdmin() || lecionaNa(resource.data.turmaId) || ehOAluno(resource.data.alunoId) || responsavelDe(resource.data.alunoId);
+      allow write: if isAdmin() || lecionaNa(request.resource.data.turmaId);
+    }
+
+    match /mensalidades/{id} {
+      allow read: if isAdmin() || responsavelDe(resource.data.alunoId);
+      allow write: if isAdmin(); // Cloud Function com Admin SDK atualiza via webhook do Asaas
+    }
+    match /lancamentos/{id} { allow read, write: if isAdmin(); }
+    match /contasPagar/{id} { allow read, write: if isAdmin(); }
+
+    match /mensagens/{id} {
+      allow read: if isAdmin() || responsavelDe(resource.data.alunoId);
+      allow create: if isAdmin() || responsavelDe(request.resource.data.alunoId);
+    }
+
+    match /consentimentos/{id} {
+      allow read: if isAdmin() || responsavelDe(resource.data.alunoId);
+      allow write: if isAdmin() || responsavelDe(request.resource.data.alunoId);
+    }
+
+    match /aprovacoes/{id} { allow read: if auth(); allow write: if isAdmin(); }
+
+    match /logs/{id} {
+      allow read: if isAdmin() || (isPais() && resource.data.alunoId in request.auth.token.alunoIds);
+      allow create: if auth();
+      allow update, delete: if false; // auditoria é imutável
+    }
+  }
+}

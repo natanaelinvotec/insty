@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>INSTY · Plataforma</title>
+<meta name="theme-color" content="#D4242B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<!-- ===== LOGIN ===== -->
+<section class="login" id="login">
+  <div class="login-l">
+    <span class="k" aria-hidden="true">安田</span>
+    <img src="assets/logo.webp" alt="INSTY">
+    <h1>Plataforma INSTY</h1>
+    <p>Escola, aluno e família no mesmo lugar. Sem fotos de alunos, com dados protegidos.</p>
+  </div>
+  <div class="login-r">
+    <div class="login-box">
+      <h2>Entrar</h2>
+      <p class="muted">Protótipo navegável: escolha um perfil. Na versão final, o acesso é por usuário e senha com duas etapas.</p>
+      <div class="roles">
+        <button data-role="admin"><span class="k">管</span><span><b>Admin Master</b><span class="small">Direção e coordenação · gestão completa</span></span></button>
+        <button data-role="prof"><span class="k">師</span><span><b>Professor</b><span class="small">Turmas, chamada, avaliações e materiais</span></span></button>
+        <button data-role="aluno"><span class="k">学</span><span><b>Aluno</b><span class="small">Materiais, avaliações, presenças e agenda</span></span></button>
+        <button data-role="pais"><span class="k">家</span><span><b>Responsável</b><span class="small">Acompanhamento completo e financeiro</span></span></button>
+      </div>
+      <p class="small">Acesso fornecido pela coordenação · dados protegidos conforme a LGPD</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== APP ===== -->
+<div class="app" id="app">
+  <aside class="side">
+    <div class="brand"><img src="assets/logo.webp" alt="INSTY"></div>
+    <div class="who" id="who"></div>
+    <nav class="nav" id="nav"></nav>
+    <div class="foot"><button id="tema">◐ Tema</button><button id="sair">Sair</button></div>
+  </aside>
+  <main id="main"></main>
+</div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="box"><button class="x" data-close aria-label="Fechar">×</button><div id="mBody"></div></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

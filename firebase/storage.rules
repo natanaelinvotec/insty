@@ -1,0 +1,16 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Materiais: PDFs, listas e vídeos. Imagens só dentro de materiais e nunca em cadastros.
+    match /materiais/{turmaId}/{file} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && (request.auth.token.role == 'admin' || (request.auth.token.role == 'prof' && turmaId in request.auth.token.turmas))
+        && request.resource.contentType.matches('application/pdf|video/.*|application/zip|text/.*');
+    }
+    match /documentos/{alunoId}/{file} {
+      // RG, comprovantes, termos: só Admin lê; upload só Admin. Nunca servidos publicamente.
+      allow read, write: if request.auth != null && request.auth.token.role == 'admin';
+    }
+    match /{allPaths=**} { allow read, write: if false; }
+  }
+}
