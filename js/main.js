@@ -11,7 +11,7 @@
 (function () {
   'use strict';
   const d = document, $ = (s, r = d) => r.querySelector(s), $$ = (s, r = d) => Array.from(r.querySelectorAll(s));
-  const reduz = false;
+  const reduz = false; // efeitos sempre ligados, a pedido do cliente (antes respeitava 'reduzir movimento')
   const temMouse = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* ---------- 1. cursor ---------- */
